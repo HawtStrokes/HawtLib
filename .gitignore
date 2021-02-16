@@ -1,11 +1,8 @@
 # Directories
 .vs/
-Debug/
-Release/
 Build/
-
 HawtLibTester/
-HawtExperimental/
+HawtLib/Source/HawtExperimental/
 
 # VSFiles
 
