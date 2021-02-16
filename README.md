@@ -5,7 +5,7 @@ A collection of C++ Libraries
 
 Clone the repository with `git clone https://github.com/HawtStrokes/HawtLib`.
 
-In a command line (terminal) run premake5 (a Windows binary executable is provided in the External folder) with the appropriate 'action' parameter—vs2017, vs2019, etc. 
+In a command line (terminal), run premake5 (a Windows binary executable is provided in the External folder) with the appropriate 'action' parameter—vs2017, vs2019, etc. 
 
 `External/premake/premake5.exe [action]`
 
@@ -19,5 +19,5 @@ This should generate the necessary project files.
 5. **HawtCrypto** – cryptograhic library
 
 ## **Documentations**
-Currently there are no documentation. However, the repository hawtstrokes/hawtstrokes.github.io will be the website to be used.
+Currently, there are no documentations. However, the repository [hawtstrokes.github.io](https://github.com/HawtStrokes/HawtStrokes.github.io) will be the website to be used.
 An exact copy of the contents of the hawtlib directory of that repo can be found in HawtLib/Docs/
