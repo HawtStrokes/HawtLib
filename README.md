@@ -18,6 +18,9 @@ This should generate the necessary project files.
 4. **HawtParsing** – file parsing library (currenly only supports INI)
 5. **HawtCrypto** – cryptograhic library
 
+A demo usage of each library can be seen in [HawtStrokes/HawtLibDemo](https://github.com/HawtStrokes/HawtLib/tree/main/HawtLibDemo).
+
 ## **Documentations**
-Currently, there are no documentations. However, the repository [hawtstrokes.github.io](https://github.com/HawtStrokes/HawtStrokes.github.io) will be the website to be used.
-An exact copy of the contents of the hawtlib directory of that repo can be found in HawtLib/Docs/
+Currently, there are no documentations. However, the repository [HawtStrokes/HawtStrokes.github.io](https://github.com/HawtStrokes/HawtStrokes.github.io) and the wiki for this repository will hold the documentation.
+
+The entire documentation can also be found in [HawtLib/Docs/](https://github.com/HawtStrokes/HawtLib/tree/main/HawtLib/Docs).
