@@ -1,40 +1,21 @@
 #include "IniFile.h"
 #include "IniParser.h"
-#include <iostream>
 
 namespace HawtLib {
 	namespace Parsing {
-		// ctor and dtor
 		IniFile::IniFile(const std::string& file) {
 			IniParser::Get().Read(this, file);
 		}
 
-
 		IniFile::IniFile(IniFile& other) {
-			other.m_Sections.reserve(m_Sections.size());
-			for (Section* m_Section : m_Sections) {
-				Section* section = new Section{ m_Section->name};
-				std::vector<KeyValue*> keyValues{};
-				keyValues.reserve(m_Section->keyValues.size());
-				for (size_t i = 0; i < m_Section->keyValues.size(); ++i) {
-					keyValues.emplace_back(new KeyValue{ m_Section->keyValues[i]->key,
-						m_Section->keyValues[i]->value });
-				}
-				other.m_Sections.emplace_back(section);
+			for (auto& m_Section : m_Sections) {
+				other.m_Sections[m_Section.first] = m_Section.second;
 			}
 		}
 
 		IniFile& IniFile::operator=(IniFile& other) {
-			m_Sections.reserve(other.m_Sections.size());
-			for (Section* otherSection : other.m_Sections) {
-				Section* section = new Section{ otherSection->name };
-				std::vector<KeyValue*> keyValues{};
-				keyValues.reserve(otherSection->keyValues.size());
-				for (size_t i = 0; i < otherSection->keyValues.size(); ++i) {
-					keyValues.emplace_back(new KeyValue{ otherSection->keyValues[i]->key,
-						otherSection->keyValues[i]->value });
-				}
-				m_Sections.emplace_back(section);
+			for (auto& otherSection : m_Sections) {
+				m_Sections[otherSection.first] = otherSection.second;
 			}
 			return *this;
 		}
@@ -44,16 +25,15 @@ namespace HawtLib {
 		}
 		
 		void IniFile::_CleanUp() {
-			for (size_t i = 0; i < m_Sections.size(); ++i) {
-				for (size_t j = 0; j < m_Sections[i]->keyValues.size(); ++j) {
-					delete m_Sections[i]->keyValues[j];
+			for (auto& section : m_Sections) {
+				for (auto& keyVal : section.second->keyValues) {
+					delete keyVal;
 				}
-				delete m_Sections[i];
+				delete m_Sections[section.first];
 			}
 		}
 
-		
-		std::vector<IniFile::Section*>& IniFile::GetSections() {
+		std::map<unsigned long long, IniFile::Section*>& IniFile::GetSections() {
 			return m_Sections;
 		}
 	}

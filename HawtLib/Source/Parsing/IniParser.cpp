@@ -4,6 +4,7 @@
 #include "IniParser.h"
 #include "IniFile.h"
 
+#include "../Crypto/Hashing.h"
 #include "../Text/TextFormatting.h"
 
 namespace HawtLib {
@@ -45,11 +46,19 @@ namespace HawtLib {
 			// comment remover
 			auto CommentRemover = [&line, &lineEnd]() -> void {
 				for (size_t i = line.find(';'); i != line.npos; i = line.substr(i + 1, line.size() - (i + 1)).find(';')) {
+					if (i == 0) {
+						lineEnd = 0;
+						break;
+					}
 					if (line[i - 1] == '\\') continue;
 					lineEnd = i;
 					break;
 				}
 				for (size_t i = line.find('#'); i != line.npos; i = line.substr(i + 1, line.size() - (i + 1)).find('#')) {
+					if (i == 0) {
+						lineEnd = 0;
+						break;
+					}
 					if (line[i - 1] == '\\') continue;
 					lineEnd = i;
 					break;
@@ -69,12 +78,14 @@ namespace HawtLib {
 
 				else if (line[i] == '\\') shouldEscape = true;
 
-				else if (line[i] == '[') 
+				else if (line[i] == '[') {
+					++tokenBegin;
 					openSection = true;
+				}
 
 				else if (line[i] == ']' && openSection == true) {
 					tokens->push_back(new IniParser::Token{ IniParser::TokenType::Section,
-						line.substr(tokenBegin, i - tokenBegin + 1) });
+						line.substr(tokenBegin, (i - tokenBegin + 1) - 1) });
 					openSection = false;
 					tokenBegin = i;
 
@@ -104,17 +115,18 @@ namespace HawtLib {
 
 	
 		void IniParser::_Parse(IniFile* iniFile, std::vector<std::vector<IniParser::Token*>>& allTokens) {
+			unsigned long long currentSectionId = 0;
 			for (std::vector<IniParser::Token*>& lineTokens : allTokens) {
 				for (size_t i = 0; i < lineTokens.size(); ++i) {
 					if (lineTokens[i]->type == IniParser::TokenType::Section) {
+						currentSectionId = Crypto::DJB2(lineTokens[i]->data);
 						IniFile::Section* section = new IniFile::Section{lineTokens[i]->data};
-						iniFile->m_Sections.push_back(section);
+						iniFile->m_Sections[currentSectionId] = new IniFile::Section{ lineTokens[i]->data };
 					}
 					else if (lineTokens[i]->type == IniParser::TokenType::Key) {	// might change this to else later
 						if(i < lineTokens.size() && lineTokens[i + 1]->type == IniParser::TokenType::Value) {
-							
-							iniFile->m_Sections[iniFile->m_Sections.size() - ((iniFile->m_Sections.size() != 0)? 1 : 0)]->keyValues.push_back(new KeyValue{ Text::Trim(lineTokens[i]->data),
-								Text::Trim(lineTokens[i + 1]->data) });
+							iniFile->m_Sections[currentSectionId]->keyValues.push_back(new KeyValue{Text::Trim(lineTokens[i]->data),
+								Text::Trim(lineTokens[i + 1]->data)});
 							++i;	// skip next
 						}
 						else __debugbreak();
