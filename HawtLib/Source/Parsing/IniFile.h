@@ -3,8 +3,8 @@
 #include <vector>
 #include <string>
 #include <utility>
+#include <map>
 
-//#include "IniParser.h"
 #include "SharedStructures.h"
 
 namespace HawtLib {
@@ -18,7 +18,7 @@ namespace HawtLib {
 				std::vector<KeyValue*> keyValues;
 			};
 		private:
-			std::vector<Section*> m_Sections;
+			std::map<unsigned long long, Section*> m_Sections;
 
 		private:
 			void _CleanUp();
@@ -36,7 +36,7 @@ namespace HawtLib {
 			IniFile& operator=(IniFile&&) = default;
 
 		public:
-			std::vector<Section*>& GetSections();
+			std::map<unsigned long long, Section*>& GetSections();
 			friend class IniParser;
 		};
 	}
