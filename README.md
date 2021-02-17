@@ -11,6 +11,8 @@ In a command line (terminal), run premake5 (a Windows binary executable is provi
 
 This should generate the necessary project files.
 
+**Note:** HawtLibDemo won't work without building HawtLib.
+
 ## **Current Libraries Included**
 1. **HawtTables** – table creation library
 2. **HawtText** – text formatting library
