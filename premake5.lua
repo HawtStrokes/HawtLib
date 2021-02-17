@@ -53,7 +53,7 @@ project "HawtLibDemo"
 	targetdir ("Build/bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("Build/bin-obj/" .. outputDir .. "/%{prj.name}")
 
-	includedirs {"Build/Includes/HawtLib"}			-- HawtLib Include Location
+	includedirs {"Build/includes"}				-- HawtLib Include Location
 	libdirs {"Build/bin/" .. outputDir .. "/HawtLib"}	-- HawtLib lib location
 	links {"HawtLib.lib"}					-- link HawtLib.lib
 
