@@ -1,19 +1,11 @@
 # Directories
-.vs/
 Build/
-HawtLibTester/
-HawtLib/Source/HawtExperimental/
+HawtLib/Source/Experimental/
 
-# VSFiles
-
-*.pdb
-*.obj
+# VS Folder and Files
+.vs/
 *.sln
-*.lik
 *.vcxproj*
-*.user
-*.tlog
 
 # Todo Files
-
 Todo.txt
