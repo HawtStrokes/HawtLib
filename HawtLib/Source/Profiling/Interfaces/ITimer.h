@@ -2,7 +2,7 @@
 #include <chrono>
 
 namespace HawtLib {
-	namespace HawtProfiling {
+	namespace Profiling {
 		class ITimer {
 		private:
 			virtual inline void _Start() noexcept = 0;

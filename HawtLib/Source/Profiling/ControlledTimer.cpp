@@ -2,7 +2,7 @@
 #include <iostream>
 
 namespace HawtLib {
-	namespace HawtProfiling {
+	namespace Profiling {
 		inline void ControlledTimer::_Start() noexcept {
 			startTime = std::chrono::high_resolution_clock::now();
 		}

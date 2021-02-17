@@ -12,7 +12,7 @@
 
 namespace HawtLib {
 
-	namespace HawtText {
+	namespace Text {
 		std::string CenterText(const std::string& inStr, size_t space = 120);
 		std::string RightText(const std::string& inStr, size_t space = 120);
 		std::string ToLower(const std::string& inStr);

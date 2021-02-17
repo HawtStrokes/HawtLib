@@ -2,7 +2,7 @@
 #include <string>
 
 namespace HawtLib {
-	namespace HawtParsing {
+	namespace Parsing {
 		struct KeyValue {
 			std::string key;
 			std::string value;

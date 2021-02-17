@@ -4,10 +4,10 @@
 #include "IniParser.h"
 #include "IniFile.h"
 
-#include "../HawtText/TextFormatting.h"
+#include "../Text/TextFormatting.h"
 
 namespace HawtLib {
-	namespace HawtParsing {
+	namespace Parsing {
 		IniParser& IniParser::Get() {
 			static IniParser* instance = nullptr;
 			return *instance;
@@ -24,7 +24,7 @@ namespace HawtLib {
 
 			std::string line;
 			while (std::getline(ifs, line)) {
-				line = std::move(HawtText::Trim(line));
+				line = std::move(Text::Trim(line));
 				std::vector<IniParser::Token*>* lineTokens = _Lex(line);
 				allTokens.push_back(*lineTokens);
 			}
@@ -113,8 +113,8 @@ namespace HawtLib {
 					else if (lineTokens[i]->type == IniParser::TokenType::Key) {	// might change this to else later
 						if(i < lineTokens.size() && lineTokens[i + 1]->type == IniParser::TokenType::Value) {
 							
-							iniFile->m_Sections[iniFile->m_Sections.size() - ((iniFile->m_Sections.size() != 0)? 1 : 0)]->keyValues.push_back(new KeyValue{ HawtText::Trim(lineTokens[i]->data),
-								HawtText::Trim(lineTokens[i + 1]->data) });
+							iniFile->m_Sections[iniFile->m_Sections.size() - ((iniFile->m_Sections.size() != 0)? 1 : 0)]->keyValues.push_back(new KeyValue{ Text::Trim(lineTokens[i]->data),
+								Text::Trim(lineTokens[i + 1]->data) });
 							++i;	// skip next
 						}
 						else __debugbreak();

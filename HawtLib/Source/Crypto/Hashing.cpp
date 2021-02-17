@@ -1,7 +1,7 @@
 #include "Hashing.h"
 
 namespace HawtLib {
-    namespace HawtCrypto {
+    namespace Crypto {
         unsigned long long DJB2(const std::string& str) {
             unsigned long long hashValue = 5381;
             for (char c : str) {

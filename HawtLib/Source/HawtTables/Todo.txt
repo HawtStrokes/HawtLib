@@ -1,4 +1,0 @@
-TODO:
-	Text alignment
-	Documentation
-	Exception Handling

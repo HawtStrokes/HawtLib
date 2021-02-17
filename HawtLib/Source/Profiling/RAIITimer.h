@@ -2,7 +2,7 @@
 #include "Interfaces/ITimer.h"
 
 namespace HawtLib {
-	namespace HawtProfiling {
+	namespace Profiling {
 		class RAIITimer : ITimer {
 		private:
 			std::chrono::time_point<std::chrono::high_resolution_clock> startTime;

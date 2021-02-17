@@ -3,7 +3,7 @@
 #include <iostream>
 
 namespace HawtLib {
-	namespace HawtParsing {
+	namespace Parsing {
 		// ctor and dtor
 		IniFile::IniFile(const std::string& file) {
 			IniParser::Get().Read(this, file);

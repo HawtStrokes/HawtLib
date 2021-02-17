@@ -3,7 +3,7 @@
 
 namespace HawtLib {
 
-	namespace HawtTables {
+	namespace Tables {
 		struct Card {
 			Table* parentT;
 			std::string text;

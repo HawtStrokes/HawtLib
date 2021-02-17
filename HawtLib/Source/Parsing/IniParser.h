@@ -4,7 +4,7 @@
 #include <vector>
 
 namespace HawtLib {
-	namespace HawtParsing {
+	namespace Parsing {
 		class IniFile;
 
 		class IniParser {

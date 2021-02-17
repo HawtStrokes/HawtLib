@@ -1,11 +1,11 @@
 #include <iostream>
 
 #include "Card.h"
-#include "../HawtText/TextFormatting.h"
+#include "../Text/TextFormatting.h"
 
 namespace HawtLib {
 
-	namespace HawtTables {
+	namespace Tables {
 		Card::Card(Table* parent, const std::string& text, TxtAlignment txtAlignment, char Bcap)
 			: parentT(parent), text(text), txtAlignment(txtAlignment), Bcap(Bcap) {}
 
@@ -16,11 +16,11 @@ namespace HawtLib {
 			}
 			else if (txtAlignment == TxtAlignment::Center) {
 				printf("%c%s%s", Bcap,
-					HawtText::CenterText(text, parentT->GetBiggestCardLength()).c_str(), "");
+					Text::CenterText(text, parentT->GetBiggestCardLength()).c_str(), "");
 			}
 			else {	// Right
 				printf("%c%s%s", Bcap,
-					HawtText::RightText(text, parentT->GetBiggestCardLength()).c_str(), "");
+					Text::RightText(text, parentT->GetBiggestCardLength()).c_str(), "");
 			}
 		}
 	}

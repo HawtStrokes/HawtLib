@@ -8,7 +8,7 @@
 #include "SharedStructures.h"
 
 namespace HawtLib {
-	namespace HawtParsing {
+	namespace Parsing {
 		class IniParser;
 
 		class IniFile {

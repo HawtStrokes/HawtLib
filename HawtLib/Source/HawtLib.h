@@ -1,8 +1,8 @@
 #pragma once
 
-#include "HawtText/TextFormatting.h"
-#include "HawtTables/Table.h"
-#include "HawtProfiling/HawtProfiling.h"
-#include "HawtParsing/IniFile.h"
-#include "HawtParsing/IniParser.h"
-#include "HawtCrypto/Hashing.h"
+#include "Text/TextFormatting.h"
+#include "Tables/Table.h"
+#include "Profiling/HawtProfiling.h"
+#include "Parsing/IniFile.h"
+#include "Parsing/IniParser.h"
+#include "Crypto/Hashing.h"

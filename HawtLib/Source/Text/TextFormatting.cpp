@@ -1,7 +1,7 @@
 #include "TextFormatting.h"
 
 namespace HawtLib {
-	namespace HawtText {
+	namespace Text {
 
 		// Text Alignments
 		std::string CenterText(const std::string& inStr, size_t space) {

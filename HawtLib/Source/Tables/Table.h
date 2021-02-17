@@ -4,7 +4,7 @@
 
 namespace HawtLib {
 
-	namespace HawtTables {
+	namespace Tables {
 		struct Card;
 
 		enum class TxtAlignment {
