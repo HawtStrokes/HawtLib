@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "../../HawtLib/Source/HawtLib.h"
+#include "HawtLib/HawtLib.h"
 
 using namespace HawtLib;
 
