@@ -65,6 +65,12 @@ project "HawtLibDemo"
 		systemversion "latest"
 		defines "PLT_Windows"
 
+	filter "system:linux"
+		defines "PLT_Linux"
+
+	filter "system:macosx"
+		defines "PLT_Mac"
+
 	filter "configurations:Debug"
 		defines "DEBUG"
 

@@ -2,6 +2,10 @@
 
 IF exist ..\Build\includes\ ( echo Include directory exists ) ELSE ( echo Creating Include Dir && mkdir ..\Build\includes\HawtLib\ )
 
+echo Removing Old Files...
+
+del /F /Q /S ..\Build\includes\
+
 echo Adding Files...
 
 xcopy ..\HawtLib\Source\. ..\Build\includes\HawtLib\ /E /Y
