@@ -17,7 +17,7 @@ This should generate the necessary project files.
 1. **HawtTables** – table creation library
 2. **HawtText** – text formatting library
 3. **HawtProfiling** – profiling library
-4. **HawtParsing** – file parsing library (currenly only supports INI)
+4. **HawtParsing** – file parsing library (currenly only supports INI, a JSON parser is still under development)
 5. **HawtCrypto** – cryptograhic library
 
 A demo usage of each library can be seen in [HawtStrokes/HawtLibDemo](https://github.com/HawtStrokes/HawtLib/tree/main/HawtLibDemo).
