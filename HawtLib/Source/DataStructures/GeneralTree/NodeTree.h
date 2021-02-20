@@ -168,40 +168,40 @@ namespace HawtLib {
 
 		public:
 			void TraverseFromTop(size_t id, std::function<void(Node<T>*)> func) {
-				TraverseFromTop(m_NodeMemoryMap.at(id), func);
+				_TraverseFromTop(m_NodeMemoryMap.at(id), func);
 			}
 
 			void TraverseFromTop(std::function<void(Node<T>*)> func) {
-				TraverseFromTop(m_Head, func);
+				_TraverseFromTop(m_Head, func);
 			}
 
 			void TraverseFromBottom(size_t id, std::function<void(Node<T>*)> func) {
-				TraverseFromBottom(m_NodeMemoryMap.at(id), func);
+				_TraverseFromBottom(m_NodeMemoryMap.at(id), func);
 			}
 
 			void TraverseFromBottom(std::function<void(Node<T>*)> func) {
-				TraverseFromBottom(m_Head, func);
+				_TraverseFromBottom(m_Head, func);
 			}
 
-		public:
+		private:
 
-			static void TraverseFromTop(Node<T>* traverseNode, std::function<void(Node<T>*)> func, Node<T>* endNode = nullptr) {
+			void _TraverseFromTop(Node<T>* traverseNode, std::function<void(Node<T>*)> func, Node<T>* endNode = nullptr) {
 				if (traverseNode->children.empty()) return;
 				for (size_t i = 0; i < traverseNode->children.size(); ++i) {
 					if (traverseNode->children[i] == endNode) return;
 					func(traverseNode->children[i]);
 					if (i == traverseNode->children.size() - 1) {
 						for (Node<T>* node : traverseNode->children) {
-							TraverseFromTop(node, func);
+							_TraverseFromTop(node, func);
 						}
 					}
 				}
 			}
 
-			static void TraverseFromBottom(Node<T>* startNode, std::function<void(Node<T>*)> func, Node<T>* endNode = nullptr) {
+			void _TraverseFromBottom(Node<T>* startNode, std::function<void(Node<T>*)> func, Node<T>* endNode = nullptr) {
 
 				for (Node<T>* node : startNode->children) {
-					TraverseFromBottom(node, func);
+					_TraverseFromBottom(node, func);
 					func(node);
 				}
 			}
