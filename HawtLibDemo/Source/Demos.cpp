@@ -45,6 +45,36 @@ void TextFormatDemo() {
 	std::cin.get();
 }
 
+void GeneralTreeDemo() {
+	std::cout << __FUNCTION__ << std::endl;
+	using namespace HawtLib::DataStructures;
+	NodeTree<int> nodeTree;
+	//auto rootId = nodeTree.AddNode(1);
+	nodeTree.AddNode(1);
+	nodeTree.AddNode(1);
+	nodeTree.AddNode(1);
+	nodeTree.AddNode(1);
+	nodeTree.MoveHeadChild(0);
+	nodeTree.AddNode(2);
+	nodeTree.AddNode(2);
+	nodeTree.AddNode(2);
+	nodeTree.AddNode(2);
+	nodeTree.MoveHeadChild(0);
+	nodeTree.AddNode(3);
+	nodeTree.AddNode(3);
+	nodeTree.AddNode(3);
+	nodeTree.AddNode(3);
+	nodeTree.MoveHeadParent();
+	nodeTree.MoveHeadParent();
+	nodeTree.TraverseFromTop([](Node<int>* node) {
+		std::cout << node->data.value() << std::endl;
+		});
+	std::cin.get();
+	nodeTree.TraverseFromBottom([](Node<int>* node) {
+		std::cout << node->data.value() << std::endl;
+		});
+}
+
 void IniParserDemo() {
 	std::cout << __FUNCTION__ << std::endl;
 	// create sample ini file
@@ -93,6 +123,7 @@ void CryptoDemo() {
 }
 
 int main() {
+	GeneralTreeDemo();
 	IniParserDemo();
 	TableDemo();
 	TextFormatDemo();
