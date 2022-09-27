@@ -29,12 +29,6 @@
     <ClCompile Include="HawtLib\Source\Crypto\Hashing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HawtLib\Source\Parsing\IniFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HawtLib\Source\Parsing\IniParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HawtLib\Source\Profiling\ControlledTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -56,18 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HawtLib\Source\Crypto\Hashing.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HawtLib\Source\DataStructures\GeneralTree\NodeTree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HawtLib\Source\Parsing\IniFile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HawtLib\Source\Parsing\IniParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HawtLib\Source\Parsing\SharedStructures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HawtLib\Source\Profiling\Interfaces\ITimer.h">

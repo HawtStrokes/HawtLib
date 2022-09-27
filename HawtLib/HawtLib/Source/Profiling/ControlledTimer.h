@@ -1,9 +1,18 @@
 #pragma once
+
+#if defined(BUILD_DLL)
+#define SPEC __declspec(dllexport)
+#elif defined(BUILD_STATIC)
+#define SPEC
+#else
+#define SPEC __declspec(dllimport)
+#endif
+
 #include "Interfaces/ITimer.h"
 
 namespace HawtLib {
 	namespace Profiling {
-		class ControlledTimer : public ITimer {
+		SPEC class ControlledTimer : public ITimer {
 		private:
 			std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 			float duration;	// in ns
