@@ -1,17 +1,27 @@
 #pragma once
+
+#if defined(BUILD_DLL)
+#define SPEC __declspec(dllexport)
+#elif defined(BUILD_STATIC)
+#define SPEC
+#else
+#define SPEC __declspec(dllimport)
+#endif
+
 #include <vector>
 #include <string>
+
 
 namespace HawtLib {
 
 	namespace Tables {
-		struct Card;
+		SPEC struct Card;
 
-		enum class TxtAlignment {
+		SPEC enum class TxtAlignment {
 			Left, Center, Right
 		};
 
-		class Table {
+		SPEC class Table {
 		private:
 			struct Row {
 				std::vector<Card*> Cards;
