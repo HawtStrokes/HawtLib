@@ -19,7 +19,6 @@
     <None Include="HawtLib\Docs\docs.html" />
     <None Include="HawtLib\Docs\hawtlib.html" />
     <None Include="HawtLib\Docs\index.html" />
-    <None Include=".gitignore" />
     <None Include="HawtLibDemo\iniSample.ini" />
     <None Include="scripts\MakeIncludes.bat">
       <Filter>Source Files</Filter>
