@@ -98,8 +98,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="HawtLib\Source\Crypto\Hashing.cpp" />
-    <ClCompile Include="HawtLib\Source\Parsing\IniFile.cpp" />
-    <ClCompile Include="HawtLib\Source\Parsing\IniParser.cpp" />
     <ClCompile Include="HawtLib\Source\Profiling\ControlledTimer.cpp" />
     <ClCompile Include="HawtLib\Source\Profiling\RAIITimer.cpp" />
     <ClCompile Include="HawtLib\Source\Tables\Card.cpp" />
@@ -108,11 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HawtLib\Source\Crypto\Hashing.h" />
-    <ClInclude Include="HawtLib\Source\DataStructures\GeneralTree\NodeTree.h" />
     <ClInclude Include="HawtLib\Source\HawtLib.h" />
-    <ClInclude Include="HawtLib\Source\Parsing\IniFile.h" />
-    <ClInclude Include="HawtLib\Source\Parsing\IniParser.h" />
-    <ClInclude Include="HawtLib\Source\Parsing\SharedStructures.h" />
     <ClInclude Include="HawtLib\Source\Profiling\ControlledTimer.h" />
     <ClInclude Include="HawtLib\Source\Profiling\HawtProfiling.h" />
     <ClInclude Include="HawtLib\Source\Profiling\Interfaces\ITimer.h" />
