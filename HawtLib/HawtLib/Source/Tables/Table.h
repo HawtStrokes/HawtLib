@@ -15,13 +15,13 @@
 namespace HawtLib {
 
 	namespace Tables {
-		SPEC struct Card;
+		struct SPEC Card;
 
 		SPEC enum class TxtAlignment {
 			Left, Center, Right
 		};
 
-		SPEC class Table {
+		class SPEC Table {
 		private:
 			struct Row {
 				std::vector<Card*> Cards;

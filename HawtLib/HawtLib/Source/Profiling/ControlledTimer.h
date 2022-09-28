@@ -12,7 +12,8 @@
 
 namespace HawtLib {
 	namespace Profiling {
-		SPEC class ControlledTimer : public ITimer {
+
+		class SPEC ControlledTimer : public ITimer {
 		private:
 			std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 			float duration;	// in ns
