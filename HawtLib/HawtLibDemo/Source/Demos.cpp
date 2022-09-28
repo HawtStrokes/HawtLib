@@ -32,7 +32,7 @@ void TextFormatDemo() {
 	auto x = Text::CenterText(test);
 	std::cout << x << std::endl;
 	test = "   hello";
-	x = std::move(Text::TrimLead(test));
+	x = Text::TrimLead(test);
 	std::cout << x << std::endl;
 	test = "hello       ";
 	x = Text::TrimTrail(test);
