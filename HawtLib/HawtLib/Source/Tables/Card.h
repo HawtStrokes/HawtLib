@@ -13,7 +13,7 @@
 namespace HawtLib {
 
 	namespace Tables {
-		SPEC struct Card {
+		struct SPEC Card {
 			Table* parentT;
 			std::string text;
 			TxtAlignment txtAlignment;

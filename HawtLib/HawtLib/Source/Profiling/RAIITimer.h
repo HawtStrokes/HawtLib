@@ -12,7 +12,8 @@
 
 namespace HawtLib {
 	namespace Profiling {
-		SPEC class RAIITimer : ITimer {
+
+		class SPEC RAIITimer : ITimer {
 		private:
 			std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 			float* duration;
