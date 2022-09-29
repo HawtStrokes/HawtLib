@@ -11,19 +11,19 @@ Clone the repository with `git clone https://github.com/HawtStrokes/HawtLib`.
 
 
 
-**Notes:** 
+## **Notes:** 
 
-1. No premake support yet.
-2. HawtLibDemo won't work without building HawtLib.
+No premake support yet.
 
 ## **Current Libraries Included**
 1. **Tables** – Table creation library
 2. **Text** – Text formatting library
 3. **Profiling** – Profiling library
 4. **Crypto** – Cryptograhic library
-
+5. **Parsing** – File parsing library
 
 A demo usage of each library can be seen in [HawtStrokes/HawtLibDemo](https://github.com/HawtStrokes/HawtLib/tree/main/HawtLibDemo).
 
 ## **Documentations**
 None as of yet.
+
