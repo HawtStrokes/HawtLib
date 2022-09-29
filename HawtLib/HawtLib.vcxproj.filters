@@ -44,7 +44,10 @@
     <ClCompile Include="HawtLib\Source\Text\TextFormatting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HawtLibDemo\Source\Demos.cpp">
+    <ClCompile Include="HawtLib\Source\Parsing\INI\IniFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HawtLib\Source\Parsing\INI\IniParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,6 +77,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HawtLib\Source\HawtLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HawtLib\Source\Parsing\INI\IniFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HawtLib\Source\Parsing\KeyValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HawtLib\Source\Parsing\INI\IniParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HawtLib\Source\Parsing\Parsing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -27,10 +27,10 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -59,21 +59,26 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheets\Debug_Static.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheets\Debug_DLL.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheets\Release_Static.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DLL|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\PropertySheets\Release_DLL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)\Build\$(Configuration)\Output\</OutDir>
     <IntDir>$(ProjectDir)\Build\$(Configuration)\Intermediate\</IntDir>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -84,11 +89,13 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)\Build\$(Configuration)\Output\</OutDir>
     <IntDir>$(ProjectDir)\Build\$(Configuration)\Intermediate\</IntDir>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DLL|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)\Build\$(Configuration)\Output\</OutDir>
     <IntDir>$(ProjectDir)\Build\$(Configuration)\Intermediate\</IntDir>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">
     <ClCompile>
@@ -160,13 +167,9 @@
     <None Include="scripts\MakeIncludes.sh" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HawtLibDemo\Source\Demos.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Static|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_Static|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_DLL|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="HawtLib\Source\Crypto\Hashing.cpp" />
+    <ClCompile Include="HawtLib\Source\Parsing\INI\IniFile.cpp" />
+    <ClCompile Include="HawtLib\Source\Parsing\INI\IniParser.cpp" />
     <ClCompile Include="HawtLib\Source\Profiling\ControlledTimer.cpp" />
     <ClCompile Include="HawtLib\Source\Profiling\RAIITimer.cpp" />
     <ClCompile Include="HawtLib\Source\Tables\Card.cpp" />
@@ -176,6 +179,10 @@
   <ItemGroup>
     <ClInclude Include="HawtLib\Source\Crypto\Hashing.h" />
     <ClInclude Include="HawtLib\Source\HawtLib.h" />
+    <ClInclude Include="HawtLib\Source\Parsing\INI\IniFile.h" />
+    <ClInclude Include="HawtLib\Source\Parsing\INI\IniParser.h" />
+    <ClInclude Include="HawtLib\Source\Parsing\KeyValue.h" />
+    <ClInclude Include="HawtLib\Source\Parsing\Parsing.h" />
     <ClInclude Include="HawtLib\Source\Profiling\ControlledTimer.h" />
     <ClInclude Include="HawtLib\Source\Profiling\HawtProfiling.h" />
     <ClInclude Include="HawtLib\Source\Profiling\Interfaces\ITimer.h" />
