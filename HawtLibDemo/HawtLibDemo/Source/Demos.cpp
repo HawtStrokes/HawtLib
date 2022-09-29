@@ -1,8 +1,39 @@
 #include <iostream>
+#include <fstream>
 
-#include "../../HawtLib/Source/HawtLib.h"
+#include "HawtLib/HawtLib.h"
+
 
 using namespace HawtLib;
+
+void IniParserDemo() {
+	std::ofstream ofs("sample.ini");
+	std::string iniContent = 
+R"(; last modified 1 April 2001 by John Doe
+[owner]
+name = John Doe
+organization = Acme Widgets Inc.
+
+[database]
+; use IP address in case network name resolution is not working
+server = 192.0.2.62     
+port = 143
+file = "payroll.dat"
+)";
+	ofs << iniContent;
+	ofs.close();
+	HawtLib::Parsing::Ini::IniFile iniFile("sample.ini");
+	std::vector<std::string*> sectionNames = iniFile.GetSectionNames();
+	for (std::string* sectionName_ptr : sectionNames) {
+		std::cout << *sectionName_ptr << std::endl;
+		HawtLib::Parsing::Ini::Section* keyValues = iniFile.GetSectionKV(*sectionName_ptr);
+		for (HawtLib::Parsing::KeyValue<std::string, std::string>* kv : keyValues->keyValues) {
+			std::cout << "Key: " << kv->key << std::endl << "Value: " << kv->value << std::endl;
+		}
+		std::cout << "------------------" << std::endl;
+	}
+	std::cin.get();
+}
 
 void TableDemo() {
 	std::cout << __FUNCTION__ << std::endl;
@@ -54,5 +85,6 @@ int main() {
 	TableDemo();
 	TextFormatDemo();
 	CryptoDemo();
+	IniParserDemo();
 }
 
