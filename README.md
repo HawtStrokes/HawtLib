@@ -13,8 +13,7 @@ Clone the repository with `git clone https://github.com/HawtStrokes/HawtLib`.
 
 **Notes:** 
 
-1. No premake support yet.
-2. HawtLibDemo won't work without building HawtLib.
+No premake support yet.
 
 ## **Current Libraries Included**
 1. **Tables** – Table creation library
