@@ -21,9 +21,10 @@ Clone the repository with `git clone https://github.com/HawtStrokes/HawtLib`.
 2. **Text** – Text formatting library
 3. **Profiling** – Profiling library
 4. **Crypto** – Cryptograhic library
-
+5. **Parsing** – File parsing library
 
 A demo usage of each library can be seen in [HawtStrokes/HawtLibDemo](https://github.com/HawtStrokes/HawtLib/tree/main/HawtLibDemo).
 
 ## **Documentations**
 None as of yet.
+
