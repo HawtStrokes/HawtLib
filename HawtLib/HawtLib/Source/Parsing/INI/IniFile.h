@@ -10,7 +10,7 @@
 
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 #include "../KeyValue.h"
 
@@ -27,7 +27,7 @@ namespace HawtLib::Parsing::Ini {
 
 	class SPEC IniFile {
 	private:
-		std::map<std::string, Section*> m_Sections;	// (#D1)
+		std::unordered_map<std::string, Section*> m_Sections;	// (#D1)
 		std::vector<std::string*> m_SectionNames;
 
 	private:

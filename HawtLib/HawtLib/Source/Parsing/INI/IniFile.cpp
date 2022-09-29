@@ -77,7 +77,8 @@ namespace HawtLib::Parsing::Ini {
 
 
 	void IniFile::CreateSection(const std::string& name) {
-		m_Sections.insert(std::pair<std::string, Section*>(name, new Section{ name }));
+		//m_Sections.insert(std::pair<std::string, Section*>(name, new Section{ name }));
+		m_Sections[name] = new Section{ name };
 		m_SectionNames.push_back(&m_Sections[name]->name);
 	}
 
