@@ -9,7 +9,7 @@
 #endif
 
 namespace HawtLib {
-	namespace Parsing {
+	namespace File {
 		template <typename T, typename U> struct SPEC KeyValue {
 			T key;
 			U value;

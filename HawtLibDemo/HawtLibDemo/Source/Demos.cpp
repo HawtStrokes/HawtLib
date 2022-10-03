@@ -22,16 +22,19 @@ file = "payroll.dat"
 )";
 	ofs << iniContent;
 	ofs.close();
-	HawtLib::Parsing::Ini::IniFile iniFile("sample.ini");
+	HawtLib::File::IniFile iniFile("sample.ini");
 	std::vector<std::string*> sectionNames = iniFile.GetSectionNames();
 	for (std::string* sectionName_ptr : sectionNames) {
 		std::cout << *sectionName_ptr << std::endl;
-		HawtLib::Parsing::Ini::Section* keyValues = iniFile.GetSectionKV(*sectionName_ptr);
-		for (HawtLib::Parsing::KeyValue<std::string, std::string>* kv : keyValues->keyValues) {
+		HawtLib::File::Section* keyValues = iniFile.GetSectionKV(*sectionName_ptr);
+		for (HawtLib::File::KeyValue<std::string, std::string>* kv : keyValues->keyValues) {
 			std::cout << "Key: " << kv->key << std::endl << "Value: " << kv->value << std::endl;
 		}
 		std::cout << "------------------" << std::endl;
 	}
+
+	HawtLib::File::Persistence::IniSave(iniFile, "persistenceTest.ini");
+
 	std::cin.get();
 }
 
