@@ -20,7 +20,7 @@ No premake support yet.
 2. **Text** – Text formatting library
 3. **Profiling** – Profiling library
 4. **Crypto** – Cryptograhic library
-5. **Parsing** – File parsing library
+5. **File** – File parsing and creation library
 
 A demo usage of each library can be seen in [HawtStrokes/HawtLibDemo](https://github.com/HawtStrokes/HawtLib/tree/master/HawtLibDemo/HawtLibDemo/Source).
 
