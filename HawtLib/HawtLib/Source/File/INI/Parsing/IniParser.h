@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 
 namespace HawtLib {
 	namespace File {
@@ -32,13 +33,13 @@ namespace HawtLib {
 
 			private:
 				// Tokenize a line
-				std::vector<Token*>* _Lex(std::string& line);
+				std::unique_ptr<std::vector<Token*>> _Lex(std::string& line);
 
 				// creates an IniFile object
 				void _Parse(IniFile* iniFile, std::vector<std::vector<IniParser::Token*>>&);
 
 				// cleans the std::vector<Token*>* made by _Lex()
-				void _CleanTokens(std::vector<std::vector<IniParser::Token*>>&);
+				void _CleanTokens(const std::vector<std::vector<IniParser::Token*>>&);
 
 			public:
 				IniParser() = delete;

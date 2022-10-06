@@ -8,24 +8,11 @@
 
 namespace HawtLib {
 	namespace File {
-		// delete key value pairs (keyValue) (#D1)
-		void IniFile::_CleanUp() {
-			for (std::string* sectionName : m_SectionNames) {
-				delete m_Sections[*sectionName];	// delete section
-			}
-		}
-
-		// delete section pointers (m_Sections) (#D2)
-		Section::~Section() {
-			for (KeyValue<std::string, std::string>* kv : keyValues) {
+		IniFile::Section::~Section() {
+			for (const KeyValue<std::string, std::string>* kv : keyValues) {
 				delete kv;
 			}
 		}
-		IniFile::~IniFile() {
-			_CleanUp();
-		}
-
-
 
 		IniFile::IniFile(const std::string& fileName) {
 			Parsing::IniParser::Get().Read(this, fileName);
@@ -33,73 +20,70 @@ namespace HawtLib {
 
 		// Copy
 		IniFile::IniFile(IniFile& other) {
-			for (std::string* sectionName : other.m_SectionNames) {
-				this->CreateSection(*sectionName);
-				for (KeyValue<std::string, std::string>* kv : other.GetSectionKV(*sectionName)->keyValues) {
-					this->AddKeyValue(*sectionName, kv->key, kv->value);
+			for (auto& otherSections: other.m_Sections)
+			{
+				this->CreateSection(otherSections.first);
+				for (const KeyValue<std::string, std::string>* kv : other.GetSectionKV(otherSections.first)->keyValues)
+				{
+					this->AddKeyValue(otherSections.first, kv->key, kv->value);
 				}
 			}
 		}
-		IniFile& IniFile::operator=(IniFile& other) {
-			for (std::string* sectionName : other.m_SectionNames) {
-				this->CreateSection(*sectionName);
-				for (KeyValue<std::string, std::string>* kv : other.GetSectionKV(*sectionName)->keyValues) {
-					this->AddKeyValue(*sectionName, kv->key, kv->value);
+		IniFile& IniFile::operator=(const IniFile& other) {
+
+			for (auto& otherSections : other.m_Sections) {
+				this->CreateSection(otherSections.first);
+				for (const KeyValue<std::string, std::string>* kv : other.GetSectionKV(otherSections.first)->keyValues) {
+					this->AddKeyValue(otherSections.first, kv->key, kv->value);
 				}
 			}
+
 			return *this;
 		}
 
 		// Move
-
 		IniFile::IniFile(IniFile&& other) noexcept {
-			this->m_SectionNames = other.m_SectionNames;
-			this->m_Sections = other.m_Sections;
-
-			for (std::string* sectionName : other.m_SectionNames) {
-				sectionName = nullptr;
-				for (KeyValue<std::string, std::string>* kv : other.GetSectionKV(*sectionName)->keyValues) {
-					kv = nullptr;
-				}
+			for (auto& otherSections : other.m_Sections)
+			{
+				this->m_Sections[otherSections.first] = std::move(otherSections.second);
 			}
 		}
 		IniFile& IniFile::operator=(IniFile&& other) noexcept {
-			if (this != &other) {
-				this->_CleanUp();
-				this->m_SectionNames = other.m_SectionNames;
-				this->m_Sections = other.m_Sections;
-
-				for (std::string* sectionName : other.m_SectionNames) {
-					sectionName = nullptr;
-					for (KeyValue<std::string, std::string>* kv : other.GetSectionKV(*sectionName)->keyValues) {
-						kv = nullptr;
-					}
-				}
-				return *this;
+			for (auto& otherSections : other.m_Sections) {
+				this->m_Sections[otherSections.first] = std::move(otherSections.second);
 			}
 			return *this;
 		}
 
 
 		IniFile& IniFile::CreateSection(const std::string& name) {
-			m_Sections[name] = new Section{ name };
-			m_SectionNames.push_back(&m_Sections[name]->name);
+			m_Sections[name] = std::make_shared<Section>();
 			return *this;
 		}
 
 		IniFile& IniFile::AddKeyValue(const std::string& sectionName, const std::string& key, const std::string& value) {
-			KeyValue<std::string, std::string>* kv = new KeyValue<std::string, std::string>{ key, value }; // (#D1)
-			m_Sections[sectionName]->keyValues.push_back(kv);
+			m_Sections.at(sectionName)->keyValues.push_back(new KeyValue{ key, value });
 			return *this;
 		}
 
-		std::vector<std::string*> IniFile::GetSectionNames() {
-			return m_SectionNames;
+		std::vector<std::string> IniFile::GetSectionNames() {
+			std::vector<std::string> names;
+			names.reserve(m_Sections.size());
+			for (auto& kv: m_Sections)
+			{
+				names.push_back(kv.first);
+			}
+			return names;
 		}
 
-		Section* IniFile::GetSectionKV(const std::string& sectionName) {
-			return m_Sections[sectionName];
+		std::shared_ptr<IniFile::Section> IniFile::GetSectionKV(const std::string& sectionName) {
+			return m_Sections.at(sectionName);
 		}
+
+		std::shared_ptr<IniFile::Section> IniFile::GetSectionKV(const std::string& sectionName) const {
+			return m_Sections.at(sectionName);
+		}
+
 		void IniFile::Save(const std::string& file) {
 			Persistence::IniSave(*this, file);
 		}

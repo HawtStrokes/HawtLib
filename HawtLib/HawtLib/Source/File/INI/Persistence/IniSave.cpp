@@ -11,9 +11,9 @@ namespace HawtLib {
 		namespace Persistence {
 			void IniSave(IniFile& iniFile, const std::string& file) {
 				std::ofstream ofs(file);
-				for (std::string* sectionName : iniFile.GetSectionNames()) {
-					ofs << fmt::format("[{}]", *sectionName) << std::endl;
-					auto keyValues = iniFile.GetSectionKV(*sectionName)->keyValues;
+				for (std::string sectionName : iniFile.GetSectionNames()) {
+					ofs << fmt::format("[{}]", sectionName) << std::endl;
+					auto keyValues = iniFile.GetSectionKV(sectionName)->keyValues;
 					for (auto kv : keyValues) {
 						ofs << fmt::format("{} = {}", kv->key, kv->value) << std::endl;
 					}

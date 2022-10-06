@@ -11,36 +11,31 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <memory>
 
 #include "../KeyValue.h"
-
-
 
 namespace HawtLib {
 	namespace File {
 		namespace Persistence {
 			void IniSave(const std::string& file);
 		}
-
 		namespace Parsing
 		{
 			class IniParser;
 		}
 
-		struct SPEC Section {
-			std::string name;
-			std::vector<KeyValue<std::string, std::string>*> keyValues;	//(#D2)
-
-			~Section();
-		};
-
 		class SPEC IniFile {
-		private:
-			std::unordered_map<std::string, Section*> m_Sections;	// (#D1)
-			std::vector<std::string*> m_SectionNames;
+		public:
+			struct SPEC Section {
+				std::vector<KeyValue<std::string, std::string>*> keyValues;
+				~Section();
+			};
+
+			typedef std::unordered_map<std::string, std::shared_ptr<Section>> Sections;
 
 		private:
-			void _CleanUp();
+			Sections m_Sections;
 
 		public:
 			IniFile() = default;
@@ -48,19 +43,20 @@ namespace HawtLib {
 
 			// Copy
 			IniFile(IniFile& other);
-			IniFile& operator=(IniFile& other);
+			IniFile& operator=(const IniFile& other);
 
 			// Move
 			IniFile(IniFile&& other) noexcept;
 			IniFile& operator=(IniFile&& other) noexcept;
 
-			~IniFile();
+			~IniFile() = default;
 
 		public:
 			IniFile& CreateSection(const std::string& name);
 			IniFile& AddKeyValue(const std::string& sectionName, const std::string& key, const std::string& value);
-			std::vector<std::string*> GetSectionNames();
-			Section* GetSectionKV(const std::string& sectionName);
+			std::vector<std::string> GetSectionNames();
+			std::shared_ptr<Section> GetSectionKV(const std::string& sectionName);
+			std::shared_ptr<Section> GetSectionKV(const std::string& sectionName) const;
 			void Save(const std::string& file);
 			friend class ::HawtLib::File::Parsing::IniParser;
 		};
