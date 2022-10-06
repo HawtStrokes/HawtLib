@@ -97,5 +97,8 @@
     <ClInclude Include="HawtLib\Source\File\INI\Persistence\IniSave.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HawtLib\Source\File\FileExceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

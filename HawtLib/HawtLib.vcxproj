@@ -186,6 +186,7 @@
   <ItemGroup>
     <ClInclude Include="HawtLib\Source\Crypto\Hashing.h" />
     <ClInclude Include="HawtLib\Source\File\File.h" />
+    <ClInclude Include="HawtLib\Source\File\FileExceptions.h" />
     <ClInclude Include="HawtLib\Source\File\INI\Persistence\IniSave.h" />
     <ClInclude Include="HawtLib\Source\HawtLib.h" />
     <ClInclude Include="HawtLib\Source\File\INI\IniFile.h" />
