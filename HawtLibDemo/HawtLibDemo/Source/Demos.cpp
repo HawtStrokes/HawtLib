@@ -22,18 +22,27 @@ file = "payroll.dat"
 )";
 	ofs << iniContent;
 	ofs.close();
-	HawtLib::File::IniFile iniFile("sample.ini");
-	std::vector<std::string*> sectionNames = iniFile.GetSectionNames();
-	for (std::string* sectionName_ptr : sectionNames) {
-		std::cout << *sectionName_ptr << std::endl;
-		HawtLib::File::Section* keyValues = iniFile.GetSectionKV(*sectionName_ptr);
-		for (HawtLib::File::KeyValue<std::string, std::string>* kv : keyValues->keyValues) {
-			std::cout << "Key: " << kv->key << std::endl << "Value: " << kv->value << std::endl;
+	try
+	{
+		HawtLib::File::IniFile iniFile("sample.ini");
+
+		std::vector<std::string> sectionNames = iniFile.GetSectionNames();
+		for (std::string& sectionName_ptr : sectionNames) {
+			std::cout << sectionName_ptr << std::endl;
+			auto keyValues = iniFile.GetSectionKV(sectionName_ptr);
+			for (HawtLib::File::KeyValue<std::string, std::string>* kv : keyValues->keyValues) {
+				std::cout << "Key: " << kv->key << std::endl << "Value: " << kv->value  << "[.]" << std::endl;
+			}
+			std::cout << "------------------" << std::endl;
 		}
-		std::cout << "------------------" << std::endl;
+
+		HawtLib::File::Persistence::IniSave(iniFile, "persistenceTest.ini");
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what();
 	}
 
-	HawtLib::File::Persistence::IniSave(iniFile, "persistenceTest.ini");
 
 	std::cin.get();
 }
