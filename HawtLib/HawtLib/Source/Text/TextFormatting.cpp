@@ -71,7 +71,7 @@ namespace HawtLib {
 				if (c != delim) word += c;
 				else {
 					outVec.emplace_back(word);
-					word = "";
+					word.clear();
 				}
 			}
 			if (!word.empty()) {

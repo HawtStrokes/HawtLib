@@ -52,14 +52,11 @@ namespace HawtLib {
 		}
 
 		void Table::_AddDivider(size_t rowIdx) const{
-			//std::string((m_BiggestCardLength + 1) * (m_Rows[i]->Cards.size() - 1)
-
-			Card* dividerCard = new Card{ m_This, std::string((m_BiggestCardLength), '-'), TxtAlignment::Left,  '+' };
+			Card dividerCard = Card{ m_This, std::string((m_BiggestCardLength), '-'), TxtAlignment::Left,  '+' };
 			for (size_t j = 1; j < m_Rows[rowIdx]->Cards.size(); ++j) {
-				dividerCard->Print();
+				dividerCard.Print();
 			}
 			std::cout << "+" << std::endl;
-			delete dividerCard;
 		}
 
 		Table& Table::AddCard(const std::string& text, size_t rowIdx, TxtAlignment txtAlignment, char bCap) {
