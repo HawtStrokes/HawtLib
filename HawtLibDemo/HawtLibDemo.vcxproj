@@ -162,7 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HawtLibDemo\Source\Demos.cpp" />
+    <ClCompile Include="Source\Demos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\CopyDLL.bat" />

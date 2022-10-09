@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HawtLibDemo\Source\Demos.cpp">
+    <ClCompile Include="Source\Demos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
