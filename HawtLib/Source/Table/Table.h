@@ -57,6 +57,7 @@ namespace HawtLib
 			void Internal_CheckColumnLenghts(size_t colIdx, size_t checkSize);
 
 		public:
+			Table() = default;
 			// Reserve Rows
 			Table(size_t rows);
 
