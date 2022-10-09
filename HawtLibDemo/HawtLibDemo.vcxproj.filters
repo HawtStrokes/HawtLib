@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="scripts\CopyDLL.bat">
+    <None Include="Scripts\CopyDLL.bat">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
