@@ -11,7 +11,7 @@ Clone the repository with `git clone https://github.com/HawtStrokes/HawtLib`.
 
 
 
-## **Notes:** 
+## **Notes** 
 
 No premake support yet.
 
