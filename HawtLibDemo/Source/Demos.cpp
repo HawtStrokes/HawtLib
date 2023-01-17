@@ -9,7 +9,7 @@ using namespace HawtLib;
 void IniParserDemo() {
 	std::cout << __FUNCTION__ << std::endl;
 	std::ofstream ofs("sample.ini");
-	std::string iniContent = 
+	const std::string iniContent = 
 R"(; last modified 1 April 2001 by John Doe
 [owner]
 name = John Doe
@@ -23,9 +23,23 @@ file = "payroll.dat"
 )";
 	ofs << iniContent;
 	ofs.close();
+
+	ofs.open("sample0.ini");
+	std::string iniContent0 = R"([First]
+author = Hawt Strokes
+; this is a test comment
+		; another test comment
+[Second]
+pos = middle center
+color0 = #FFFFFF
+color1 = #000000
+
+)";
+	ofs << iniContent0;
+	ofs.close();
 	try
 	{
-		HawtLib::File::IniFile iniFile("sample.ini");
+		File::IniFile iniFile("sample.ini");
 
 		std::vector<std::string> sectionNames = iniFile.GetSectionNames();
 		for (std::string& sectionName_ptr : sectionNames) {
@@ -43,7 +57,33 @@ file = "payroll.dat"
 	{
 		std::cout << e.what();
 	}
-
+	std::cout << "------------------" << std::endl;
+	std::cout << "------------------" << std::endl;
+	std::cout << "------------------" << std::endl;
+	std::cout << "------------------" << std::endl;
+	std::cout << "------------------" << std::endl;
+	try
+	{
+		File::IniFile iniFile{};
+		auto& parserInstance = HawtLib::File::Parsing::IniParser::Get();
+		parserInstance.UpdateCommentTokens(std::vector<char>{';'});
+		parserInstance.Read(&iniFile, "sample0.ini");
+		std::vector<std::string> sectionNames = iniFile.GetSectionNames();
+		for (std::string& sectionName_ptr : sectionNames)
+		{
+			std::cout << sectionName_ptr << std::endl;
+			auto keyValues = iniFile.GetSectionKV(sectionName_ptr);
+			for (HawtLib::File::KeyValue<std::string, std::string>* kv : keyValues->keyValues)
+			{
+				std::cout << "Key: " << kv->key << std::endl << "Value: " << kv->value << "[.]" << std::endl;
+			}
+			std::cout << "------------------" << std::endl;
+		}
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what();
+	}
 
 	std::cin.get();
 }

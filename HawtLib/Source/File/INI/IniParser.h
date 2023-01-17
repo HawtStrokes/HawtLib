@@ -32,23 +32,31 @@ namespace HawtLib {
 				};
 
 			private:
+				std::vector<char> m_Comments;
+				IniParser();
+
+			private:
 				// Tokenize a line
-				std::unique_ptr<std::vector<Token*>> _Lex(std::string& line);
+				std::unique_ptr<std::vector<Token*>> Internal_Lex(std::string& line);
 
 				// creates an IniFile object
-				void _Parse(IniFile* iniFile, std::vector<std::vector<IniParser::Token*>>&);
+				void Internal_Parse(IniFile* iniFile, std::vector<std::vector<IniParser::Token*>>&);
 
-				// cleans the std::vector<Token*>* made by _Lex()
-				void _CleanTokens(const std::vector<std::vector<IniParser::Token*>>&);
+				// cleans the std::vector<Token*>* made by Internal_Lex()
+				void Internal_CleanTokens(const std::vector<std::vector<IniParser::Token*>>&);
 
 			public:
-				IniParser() = delete;
 				IniParser(const IniParser&) = delete;
 				IniParser operator=(const IniParser&) = delete;
 				IniParser(const IniParser&&) = delete;
 				IniParser operator=(const IniParser&&) = delete;
 
+				static IniParser* m_Instance;
 				static IniParser& Get();
+
+				void UpdateCommentTokens();
+				void UpdateCommentTokens(const std::vector<char>& comments);
+				void ResetCommentTokens();
 
 				void Read(IniFile* iniFile, const std::string& file);
 			};
